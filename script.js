@@ -1,49 +1,74 @@
 'use strict';
 
-function Battle(fight) {
-    this.fight = function battleFight() {
-        var warrior = new Kingdom(),
-            enemy = new Enemy();
+function Kingdom(power, attack, defend) {
+    this.power = elf.power + ork.power + hobbit.power;
+    this.health = elf.health + ork.health + hobbit.health;
+    this.attack = function() {
+        enemy.defend();             
+    };
+    this.defend = function(power) {
+        this.health -= enemy.power;
+    };
 
-        console.log(warrior.power + " - Kingdom's Start Power");
-        console.log(enemy.power + " - Enemy's Start Power"); 
+    return this;
+}
 
-        while(enemy.power >= 0 && warrior.power >= 0) {
-            warrior.attack();
+function Warrior (power, health) {
+    this.power = randomValue(0, 50);
+    this.health = randomValue(0, 50);
 
-                if (warrior.power >= 0) {
-                    console.log(warrior.power + " - Kingdom's Power after Attack");
+    return this;
+}
+
+function Enemy(power, attack) {
+    this.power = randomValue(0, 100);
+    this.health = randomValue(0, 300);
+    this.attack = function() {
+        kingdom.defend();                 
+    };
+    this.defend = function() {
+        this.health -= kingdom.power;
+    }
+
+    return this;
+}
+
+function Battle(health) {
+    this.fight = function () {
+
+        console.log(kingdom.power + " - Kingdom's Start Power, " + 
+                    kingdom.health + " - Kingdom's Start health");
+        console.log(enemy.power + " - Enemy's Start Power, " + 
+                    enemy.health + " - Enemy's Start health");
+
+        while(enemy.health >= 0 && kingdom.health >= 0) {
+            kingdom.attack();
+
+                if (enemy.health >= 0) {
+                    console.log(enemy.health + " - Enemy's health after Attack");
                     enemy.attack();
-                        if (enemy.power >= 0) {
-                            console.log(enemy.power + " - Enemy's Power after Attack");
+                        if (kingdom.health >= 0) {
+                            console.log(kingdom.health + " - Kingdom's health after Attack");
                         } else {
-                            console.log('Enemy was failed! :)');
+                            console.log('Enemy was win! :(');
                         }
                 } else {
-                    console.log('Kingdom was failed :(');
-                }    
+                    console.log('Kingdom was win :)');
+            }    
         }   
     }
     return this;
 }
 
-function Kingdom(power, attack) {
-    this.power = randomPower(0, 100);
-    this.attack = function kingdomAttack() {
-        this.power -= 10;             
-    };
-    return this;
-}
+var elf = new Warrior(),
+    ork = new Warrior(),
+    hobbit = new Warrior(),
+    kingdom = new Kingdom(),
+    enemy = new Enemy(),
+    battle = new Battle();
 
-function Enemy(power, attack) {
-    this.power = randomPower(0, 100);
-    this.attack = function enemyAttack() {
-        this.power -= 10;                 
-    };
-    return this;
-}
 
-function randomPower(min, max) {
+function randomValue(min, max) {
     var rand = min - 0.5 + Math.random() * (max - min + 1),
         power;
 
@@ -52,9 +77,8 @@ function randomPower(min, max) {
     return rand;
 }
 
-var battle = new Battle();
+window.addEventListener('onload', battle.fight(), true);
 
-battle.fight();
 
 
 

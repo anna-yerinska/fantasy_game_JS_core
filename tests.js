@@ -1,4 +1,4 @@
-QUnit.test("Enemy was failed! ", function( assert ) {
-    var result = battleFight(22, 11);
+QUnit.test("Random Value", function( assert ) {
+    var result = randomValue(0, 100);
     assert.ok( result, "Passed!" );
 });
