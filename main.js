@@ -1,38 +1,5 @@
 'use strict';
 
-function Kingdom(power, attack, defend) {
-    this.power = elf.power + ork.power + hobbit.power;
-    this.health = elf.health + ork.health + hobbit.health;
-    this.attack = function() {
-        enemy.defend();             
-    };
-    this.defend = function(power) {
-        this.health -= enemy.power;
-    };
-
-    return this;
-}
-
-function Warrior (power, health) {
-    this.power = randomValue(0, 50);
-    this.health = randomValue(0, 50);
-
-    return this;
-}
-
-function Enemy(power, attack) {
-    this.power = randomValue(0, 100);
-    this.health = randomValue(0, 300);
-    this.attack = function() {
-        kingdom.defend();                 
-    };
-    this.defend = function() {
-        this.health -= kingdom.power;
-    }
-
-    return this;
-}
-
 function Battle(health) {
     this.fight = function () {
 
