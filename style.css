@@ -6,22 +6,72 @@ body
 
 .container
 {
-    width: 50%;
+    width: 95%;
     margin: 0 auto;
 }
 
+.start-game,
+.battle {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: #2b984d;
+    border:none;
+    border-radius: 7px;
+    outline: none;
+    margin-top: 50px;
+    margin-left:600px;
+    display: none; 
+}
+
+.battle
+{
+    background: #982b3e;
+    margin-top: 20px;
+}
+
+.battle span
+{
+    color: #fff;
+    font-weight: bold;
+}
+
+.start-game:active,
+.start-game:hover
+{
+    background: #56968c;
+}
+
+.start-game--text
+{
+    font-size: 18px;
+}
+
 .enemy,
-.battle,
 .kingdom
 {
-    width: 100px;
-    height: 50px;
-    border:1px solid #000;
-    margin: 10px;
+    width: 41%;
+    height: 400px;
+    margin-top: 10px;
+    display: none;
+}
+
+.enemy
+{
+    background-image: url(https://s-media-cache-ak0.pinimg.com/originals/bc/b8/f4/bcb8f4f9f0f75d94625bbe72f464b06e.jpg);
+    background-size: contain;
+    vertical-align: top;
+}
+
+.kingdom
+{
+    background-image: url(https://s-media-cache-ak0.pinimg.com/736x/2a/10/43/2a1043855c991c3c7fabe6cd9227b147.jpg);
+    background-size: cover;
+    margin-left: 15%;
 }
 
 .enemy span,
-.battle span,
 .kingdom span,
 .elfs,
 .orks,
@@ -31,17 +81,68 @@ body
     text-align: center;
     text-transform: uppercase;
     display: block;
-    margin-top: 16px; 
+    margin-top: 15px; 
+    color: red;
+    font-weight: bold;
 }
 
-.battle
+.elfs,
+.orks,
+.hobbits
 {
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+}
+
+.elfs
+{
+    background-image: url(https://s-media-cache-ak0.pinimg.com/736x/7c/32/83/7c3283a9a3ecde7aa7684e90ae421a48.jpg);
+    background-size: cover;
+}
+
+.orks
+{
+    background-image: url(https://images7.alphacoders.com/327/thumb-1920-327040.jpg);
+    background-size: cover;
+}
+
+.hobbits
+{
+    background-image: url(Hobbit-3-Design-WEPFeb-2015-022.jpg);
+    background-size: cover;
+}
+
+.createArmy
+{
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: #cc7979;
+    border:none;
+    border-radius: 7px;
+    outline: none;
+    margin-top: 50px;
     margin: 0 auto;
+    display: block;
+    color:#fff; 
+    font-weight: bold;
 }
 
-.enemy,
-.kingdom
+
+.info
 {
-    display:inline-block;
-    width: 46%;
+    height: 250px;
+    background: #fff;
+    opacity: 0.75;
+    position: absolute;
+    top: 10%;
+    display: block;
+}
+
+.info span
+{
+    text-transform: none;
+
 }
