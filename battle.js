@@ -1,25 +1,33 @@
 'use strict';
 
-function Battle(kingdom, enemy) {
+function Battle() {
 var kingdom = new Kingdom(),
     enemy = new Enemy();
     
     this.fight = function () {
        
-        while (kingdom.health > 0 && enemy.health > 0) {
-            enemy.attack();           
-            kingdom.defend(enemy);
-            kingdom.isAlive();
+        while (!kingdom.isAlive() && !enemy.isAlive()) {
+            // enemy.attack(); 
+            
+                kingdom.defend(enemy);
+                infoKingdomAfterAttack (kingdom);
+                   
+            
+/*            kingdom.isAlive();*/
                         
-            if (kingdom.health == 0 || enemy.health <= 0) {
+            if (kingdom.isAlive() || enemy.isAlive()) {
             console.log('Game over!'); 
             break;
             }
-            kingdom.attack();
-            enemy.defend(kingdom);
-            enemy.isAlive();
+/*            kingdom.attack();*/  
+            
+                enemy.defend(kingdom);
+                infoEnemyAfterAttack(enemy);
+            
+            
+/*            enemy.isAlive();*/
 
-            if (kingdom.health == 0 || enemy.health <= 0) {
+            if (kingdom.isAlive() || enemy.isAlive()) {
             console.log('Game over!'); 
             break;
             }
@@ -28,3 +36,8 @@ var kingdom = new Kingdom(),
 
     return this;
 }
+
+/*function infoBattle() {
+    infoKingdomAfterAttack ();
+    infoEnemyAfterAttack();
+}*/

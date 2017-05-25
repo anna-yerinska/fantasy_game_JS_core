@@ -6,8 +6,7 @@ body
 
 .container
 {
-    width: 95%;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .start-game,
@@ -20,15 +19,13 @@ body
     border:none;
     border-radius: 7px;
     outline: none;
-    margin-top: 50px;
-    margin-left:600px;
+    margin: 50px auto 0;
     display: none; 
 }
 
 .battle
 {
     background: #982b3e;
-    margin-top: 20px;
 }
 
 .battle span
@@ -48,69 +45,73 @@ body
     font-size: 18px;
 }
 
-.enemy,
-.kingdom
+.start-container
 {
-    width: 41%;
-    height: 400px;
-    margin-top: 10px;
-    display: none;
-}
-
-.enemy
-{
-    background-image: url(https://s-media-cache-ak0.pinimg.com/originals/bc/b8/f4/bcb8f4f9f0f75d94625bbe72f464b06e.jpg);
-    background-size: contain;
+    width: 33%;
+    margin: 0 auto;
     vertical-align: top;
 }
 
+.enemy,
 .kingdom
 {
-    background-image: url(https://s-media-cache-ak0.pinimg.com/736x/2a/10/43/2a1043855c991c3c7fabe6cd9227b147.jpg);
-    background-size: cover;
-    margin-left: 15%;
+    width: 33%;
+    height: auto;
+    margin-top: 10px;
+    display: none;
+    vertical-align: top;
+    position: relative;
 }
 
 .enemy span,
-.kingdom span,
-.elfs,
-.orks,
-.hobbits
+.kingdom span
 {
     font-size: 16px;
     text-align: center;
     text-transform: uppercase;
     display: block;
-    margin-top: 15px; 
+    margin-top: 5px; 
     color: red;
     font-weight: bold;
+}
+
+.elfs h6,
+.orks h6,
+.hobbits h6
+{
+    text-transform: uppercase;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+.elfs span,
+.orks span,
+.hobbits span
+{
+    position: absolute;
+    bottom: 0;
+    text-transform: none;
 }
 
 .elfs,
 .orks,
 .hobbits
 {
-    width: 150px;
-    height: 150px;
+    width: 50%;
+    height: auto;
     display: inline-block;
+    position: relative;
 }
 
-.elfs
+.enemy img,
+.kingdom img,
+.elfs img,
+.orks img,
+.hobbits img
 {
-    background-image: url(https://s-media-cache-ak0.pinimg.com/736x/7c/32/83/7c3283a9a3ecde7aa7684e90ae421a48.jpg);
-    background-size: cover;
-}
-
-.orks
-{
-    background-image: url(https://images7.alphacoders.com/327/thumb-1920-327040.jpg);
-    background-size: cover;
-}
-
-.hobbits
-{
-    background-image: url(Hobbit-3-Design-WEPFeb-2015-022.jpg);
-    background-size: cover;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .createArmy
@@ -128,21 +129,82 @@ body
     display: block;
     color:#fff; 
     font-weight: bold;
-}
-
-
-.info
-{
-    height: 250px;
-    background: #fff;
-    opacity: 0.75;
     position: absolute;
-    top: 10%;
-    display: block;
+    left: 50%;
+    margin-left: -75px;
+    top: 40px;
 }
 
-.info span
+
+.info-kingdom,
+.info-enemy,
+.info-kingdom--after,
+.info-enemy--after
+
+{
+    height: 135px;
+    display: block;
+    width: 250px;
+    border-radius: 10px;
+    border:3px solid red;
+    margin: 10px auto 0;
+}
+
+.info-kingdom,
+.info-kingdom--after
+{
+    margin-right: 0;
+}
+
+.info-enemy,
+.info-enemy--after
+{
+    margin-left: 0;
+}
+
+.info-kingdom--after,
+.info-enemy--after
+{
+    border:3px solid green;
+}
+
+.info-kingdom span,
+.info-enemy span
 {
     text-transform: none;
+    display: inline-block;
+    color: #000;
+    font-weight: normal;
+}
 
+.btn-attack--kingdom,
+.btn-attack--enemy
+{
+    width: 150px;
+    height: 50px;
+    text-transform: uppercase;
+    background: #982b3e;
+    border:none;
+    border-radius: 7px;
+    outline: none; 
+    margin: 10px auto 0;
+    display: block;
+    color:#fff; 
+    font-weight: bold;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.deadElf,
+.deadOrk,
+.deadHobbit
+{
+    width: 100px;
+    height: 100px;
+    background-image: url(smilie-278060_960_720.png);
+    background-size: cover; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -50px;
 }

@@ -1,89 +1,95 @@
 'use strict';
 
 function Kingdom() {
-/*    this.army = createArmy (orkAmount, elfAmount, hobbitAmount);*/
     this.power = kingdomPower();
 
     this.health = kingdomHealth(); 
 
     this.attack = function() {
         console.log('Kingdom attack!');             
-    }
+    };
+
+    this.getPower = function() {
+        kingdomPower();
+    };
+
+    this.getHealth = function() {
+        kingdomHealth();
+        
+    };
 
     this.defend = function(enemy) {
-        var allHealthAfterAttack = Number();
-
         warriorList.forEach (function(warrior) {
                         
             warrior.health -= enemy.power;
             warrior.isAlive();
-            allHealthAfterAttack = warrior.health;          
-        });
-       
-        this.health = kingdomHealthAfterAttack();;
-    }
+/*            allHealthAfterAttack = warrior.health;  */        
+        });     
+    };
 
     this.isAlive = function () {
-        if (this.health > 0) {
-            console.log(this.health + "- Kingdom's Health After Attack");
-        } else {
+        if (this.health <= 0) {
             console.log('Kingdom is dead');
+            return true;
         }
+        
+    };
 
-    }
-
-    console.log(this.power + " - Kingdom's Start Power, " + 
-                this.health + " - Kingdom's Start health");
-
-    startInfoKingdom();
+    startInfoKingdom(this);
 
     return this;
 }
 
-
-
-function kingdomPower(warrior) {
+function kingdomPower() {
     var allPower = Number();
 
-        warriorList.forEach (function(warrior) {
-        allPower += warrior.power;
-        });
-
+    warriorList.forEach (function(warrior) {
+        if (warrior.power > 0) {
+            allPower += warrior.power;
+        }
+    });
     return allPower;
 }
 
-function kingdomHealth(warrior) {
+function kingdomHealth() {
     var allHealth = Number();
 
-        warriorList.forEach (function(warrior) {
-            if (warrior.health > 0) {
-                allHealth += warrior.health;
-            }
-        });
-
+    warriorList.forEach (function(warrior) {
+        if (warrior.health > 0) {
+            allHealth += warrior.health;
+        }
+    });
     return allHealth;
 }
 
-function kingdomHealthAfterAttack(warrior) {
-    var allHealthAfterAttack = Number();
+function startInfoKingdom (kingdom) {
+    var battleContainer = document.querySelector('.start-container'),
+        info = document.createElement('div'),
+        attack = document.createElement('button');
 
-        warriorList.forEach (function(warrior) {
-            if (warrior.health > 0) {
-                allHealthAfterAttack += warrior.health;
-            }
-        });
+        attack.classList.add('btn-attack--kingdom');
+        attack.innerHTML = "Kingdom attacks!";
+        info.classList.add('info-kingdom');
+        info.innerHTML = kingdom.power + "<span>&nbsp;- Kingdom's Start Power,</span><br>" + kingdom.health + "<span>&nbsp;- Kingdom's Start Health;</span>";
+        battleContainer.appendChild(info);
+        info.appendChild(attack); 
+}
 
-    return allHealthAfterAttack;
+function infoKingdomAfterAttack(kingdom) {
+    var battleContainer = document.querySelector('.start-container'),
+        infoAfter = document.createElement('div'),
+        allHealth = Number(),
+        allPower = Number();
+        allHealth = kingdomHealth();
+        allPower = kingdomPower();
+        
+
+        infoAfter.classList.add('info-kingdom--after');
+        infoAfter.innerHTML = allPower + "<span>&nbsp;- Kingdom's Power After Attack,</span><br>" + allHealth + "<span>&nbsp;- Kingdom's Health After Attack;</span>";
+        battleContainer.appendChild(infoAfter);
 }
 
 
-function startInfoKingdom() {
-    var kingdomInfo = document.querySelector('.kingdom'),
-        info = document.createElement('div');
-        info.classList.add('info');
-        info.innerHTML = "<span>- Kingdom's Start Power, </span>" + this.power +this.health+"<span> - Kingdom's Start health</span>";
-        kingdomInfo.appendChild(info);    
-}
 
 
 

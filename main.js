@@ -3,7 +3,8 @@
 function newBattle() {
     var battle = new Battle();
 
-    battle.fight();    
+    battle.fight();
+/*    battleInfo();*/
 }
 
 

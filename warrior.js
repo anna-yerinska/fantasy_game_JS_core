@@ -2,7 +2,7 @@
 
 function Warrior (name, min, max) {
     this.power = randomValue(min, max);
-    this.health = randomValue(min, max);
+    this.health = randomValue(100, 250);
     this.name = name;
     this.isAlive = function() {
         if (this.health < 0) {                   
@@ -10,39 +10,42 @@ function Warrior (name, min, max) {
 
             console.log(deadName + ' is dead');
             this.health = 0;
-            deleteWarrior();
+            this.power = 0;
+            deadWarrior(this);
         } 
     };
+
     return this;
 }
 
 var warriorList = [];
 
 function createArmy(orkAmount, elfAmount, hobbitAmount) {
-    orkAmount = prompt('Сколько у вас в армии Королевства будет Орков?'), 
     elfAmount = prompt('Сколько у вас в армии Королевства будет Эльфов?'), 
+    orkAmount = prompt('Сколько у вас в армии Королевства будет Орков?'),
     hobbitAmount = prompt('Сколько у вас в армии Королевства будет Хоббитов?');
 
-   createArmyOrks(orkAmount);
     createArmyElfs(elfAmount);
+    createArmyOrks(orkAmount);
     createArmyHobbits(hobbitAmount);
-    viewElf(elfAmount);
+/*    viewElf(elfAmount);
     viewOrk(orkAmount);
-    viewHobbit(hobbitAmount);
+    viewHobbit(hobbitAmount);*/
+    warriorInfo(elfAmount, orkAmount, hobbitAmount);
     return warriorList;
 };
 
 
 function createArmyOrks(orkAmount) {
     for (let i = 0; i < orkAmount; i++) {
-        var ork = warriorList.push(new Warrior('Ork', 50, 200));
+        var ork = warriorList.push(new Warrior('Ork', 70, 100));
     }
     return warriorList;
 };
 
 function createArmyElfs(elfAmount) {
     for (let i = 0; i < elfAmount; i++) {
-        var elf = warriorList.push(new Warrior('Elf', 50, 150));
+        var elf = warriorList.push(new Warrior('Elf', 60, 100));
     }
     return warriorList;
 };
@@ -59,10 +62,12 @@ function deleteWarrior() {
         if (warrior.health == 0) {
         var deleteWarrior = warriorList.indexOf(warrior);
         warriorList.splice(deleteWarrior, 1);
+        deadWarrior(warrior);
         }
-    });
-    
+    });    
 }
+
+
 
 
 
