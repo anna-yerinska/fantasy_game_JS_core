@@ -1,20 +1,21 @@
 'use strict';
 
 function Kingdom() {
-    this.power = kingdomPower();
+    this.power = kingdomPower(this);
 
-    this.health = kingdomHealth(); 
+    this.health = kingdomHealth(this); 
 
     this.attack = function() {
         console.log('Kingdom attack!');             
     };
 
     this.getPower = function() {
-        kingdomPower();
+        kingdomPower(this);
+
     };
 
     this.getHealth = function() {
-        kingdomHealth();
+        kingdomHealth(this);
         
     };
 
@@ -22,14 +23,14 @@ function Kingdom() {
         warriorList.forEach (function(warrior) {
                         
             warrior.health -= enemy.power;
-            warrior.isAlive();
-/*            allHealthAfterAttack = warrior.health;  */        
-        });     
+            warrior.isAlive();       
+        });    
     };
 
     this.isAlive = function () {
-        if (this.health <= 0) {
-            console.log('Kingdom is dead');
+        this.getHealth();
+        if (this.health == 0) {
+            viewKingdomFail();
             return true;
         }
         
@@ -40,7 +41,7 @@ function Kingdom() {
     return this;
 }
 
-function kingdomPower() {
+function kingdomPower(kingdom) {
     var allPower = Number();
 
     warriorList.forEach (function(warrior) {
@@ -48,10 +49,11 @@ function kingdomPower() {
             allPower += warrior.power;
         }
     });
-    return allPower;
+    kingdom.power = allPower;
+    return kingdom.power;
 }
 
-function kingdomHealth() {
+function kingdomHealth(kingdom) {
     var allHealth = Number();
 
     warriorList.forEach (function(warrior) {
@@ -59,7 +61,8 @@ function kingdomHealth() {
             allHealth += warrior.health;
         }
     });
-    return allHealth;
+    kingdom.health = allHealth;
+    return kingdom.health;
 }
 
 function startInfoKingdom (kingdom) {
@@ -80,8 +83,8 @@ function infoKingdomAfterAttack(kingdom) {
         infoAfter = document.createElement('div'),
         allHealth = Number(),
         allPower = Number();
-        allHealth = kingdomHealth();
-        allPower = kingdomPower();
+        allHealth = kingdomHealth(kingdom);
+        allPower = kingdomPower(kingdom);
         
 
         infoAfter.classList.add('info-kingdom--after');
@@ -89,6 +92,14 @@ function infoKingdomAfterAttack(kingdom) {
         battleContainer.appendChild(infoAfter);
 }
 
+function viewKingdomFail() {
+    var battleContainer = document.querySelector('.start-container'),
+        kingdomFail = document.createElement('div');
+
+        kingdomFail.classList.add('info-kingdom--after');
+        kingdomFail.innerHTML =  "<span>Kingdom Fail!</span>";
+        battleContainer.appendChild(kingdomFail);
+}
 
 
 

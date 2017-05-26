@@ -5,13 +5,12 @@ function Warrior (name, min, max) {
     this.health = randomValue(100, 250);
     this.name = name;
     this.isAlive = function() {
-        if (this.health < 0) {                   
+        if (this.health <= 0) {                   
             var deadName = this.name;
 
             console.log(deadName + ' is dead');
             this.health = 0;
-            this.power = 0;
-            deadWarrior(this);
+            deleteWarrior();
         } 
     };
 
@@ -28,9 +27,6 @@ function createArmy(orkAmount, elfAmount, hobbitAmount) {
     createArmyElfs(elfAmount);
     createArmyOrks(orkAmount);
     createArmyHobbits(hobbitAmount);
-/*    viewElf(elfAmount);
-    viewOrk(orkAmount);
-    viewHobbit(hobbitAmount);*/
     warriorInfo(elfAmount, orkAmount, hobbitAmount);
     return warriorList;
 };
@@ -61,9 +57,11 @@ function deleteWarrior() {
     warriorList.forEach (function(warrior){
         if (warrior.health == 0) {
         var deleteWarrior = warriorList.indexOf(warrior);
-        warriorList.splice(deleteWarrior, 1);
+        /*warriorList.splice(deleteWarrior, 1);*/
+        delete warriorList[deleteWarrior];
         deadWarrior(warrior);
         }
+
     });    
 }
 

@@ -7,37 +7,30 @@ var kingdom = new Kingdom(),
     this.fight = function () {
        
         while (!kingdom.isAlive() && !enemy.isAlive()) {
-            // enemy.attack(); 
-            
+            function enemyAttack() {
                 kingdom.defend(enemy);
+                deleteWarrior();
                 infoKingdomAfterAttack (kingdom);
-                   
-            
-/*            kingdom.isAlive();*/
-                        
-            if (kingdom.isAlive() || enemy.isAlive()) {
-            console.log('Game over!'); 
-            break;
-            }
-/*            kingdom.attack();*/  
-            
+            }                
+                if (kingdom.isAlive()) {
+                    viewGameOver(); 
+                break;
+                }
+               
+              
+            function kingdomAttack() {
                 enemy.defend(kingdom);
                 infoEnemyAfterAttack(enemy);
-            
-            
-/*            enemy.isAlive();*/
-
-            if (kingdom.isAlive() || enemy.isAlive()) {
-            console.log('Game over!'); 
-            break;
             }
+                if (enemy.isAlive()) {
+                    viewGameOver();  
+                break;
+                } 
+            
+
         }
     }
 
     return this;
 }
 
-/*function infoBattle() {
-    infoKingdomAfterAttack ();
-    infoEnemyAfterAttack();
-}*/

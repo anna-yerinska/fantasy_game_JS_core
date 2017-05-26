@@ -1,7 +1,7 @@
 'use strict';
 
 function Enemy() {
-    this.power = randomValue(50, 100);
+    this.power = randomValue(150, 200);
     this.health = randomValue(200, 400);
 
     this.attack = function() {
@@ -9,7 +9,7 @@ function Enemy() {
     };
 
     this.defend = function(kingdom) {
-        this.health -= kingdom.getPower();
+        this.health -= kingdomPower(this);
 
 /*
         if (this.health >= 0) {
@@ -19,7 +19,7 @@ function Enemy() {
 
     this.isAlive = function() {
         if (this.health < 0) {
-            console.log('Enemy fail!');
+            viewEnemyFail();
             return true;
         } 
     
@@ -48,8 +48,17 @@ function infoEnemyAfterAttack (enemy) {
         infoAfter = document.createElement('div');
 
         infoAfter.classList.add('info-enemy--after');
-        infoAfter.innerHTML =  enemy.power + "<span>&nbsp;- Enemy's Power After Attack;</span>" + enemy.health + "<span>&nbsp;- Enemy's Health After Attack;</span>";
+        infoAfter.innerHTML =  enemy.power + "<span>&nbsp;- Enemy's Power After Attack;</span><br>" + enemy.health + "<span>&nbsp;- Enemy's Health After Attack;</span>";
         battleContainer.appendChild(infoAfter);
+}
+
+function viewEnemyFail() {
+    var battleContainer = document.querySelector('.start-container'),
+        enemyFail = document.createElement('div');
+
+        enemyFail.classList.add('info-enemy--after');
+        enemyFail.innerHTML =  "<span>Enemy Fail!</span>";
+        battleContainer.appendChild(enemyFail);
 }
 
 

@@ -10,7 +10,9 @@ body
 }
 
 .start-game,
-.battle {
+.battle,
+.game-over
+ {
     width: 150px;
     height: 50px;
     cursor: pointer;
@@ -20,12 +22,13 @@ body
     border-radius: 7px;
     outline: none;
     margin: 50px auto 0;
-    display: none; 
+    display: block;
 }
 
 .battle
 {
     background: #982b3e;
+    display: none;
 }
 
 .battle span
@@ -43,6 +46,11 @@ body
 .start-game--text
 {
     font-size: 18px;
+}
+
+.game-over
+{
+    display: block;
 }
 
 .start-container
