@@ -1,30 +1,5 @@
 'use strict';
 
-function Enemy() {
-    this.power = randomValue(150, 200);
-    this.health = randomValue(200, 400);
-
-    this.attack = function() {
-        EnemyGo();               
-    };
-
-    this.defend = function(kingdom) {
-        this.health -= kingdomPower(this);
-        infoEnemyAfterAttack(this);
-    };
-
-    this.isAlive = function() {
-        if (this.health < 0) {
-            viewEnemyFail();
-            return true;
-        }    
-    };
-
-    startInfoEnemy(this);
-
-    return this;
-}
-
 function startInfoEnemy (enemy) {
     var battleContainer = document.querySelector('.start-container'),
         info = document.createElement('div'),
@@ -56,7 +31,11 @@ function viewEnemyFail() {
         battleContainer.appendChild(enemyFail);
 }
 
+function EnemyGo() {
+    var battleContainer = document.querySelector('.start-container'),
+        enemyGo = document.createElement('div');
 
-
-
-
+        enemyGo.classList.add('info-enemy--after');
+        enemyGo.innerHTML =  "<span>Enemy attack!</span>";
+        battleContainer.appendChild(enemyGo);
+}

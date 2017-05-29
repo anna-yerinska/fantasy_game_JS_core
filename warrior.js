@@ -7,8 +7,6 @@ function Warrior (name, min, max) {
     this.isAlive = function() {
         if (this.health <= 0) {                   
             var deadName = this.name;
-
-            console.log(deadName + ' is dead');
             this.health = 0;
             deleteWarrior();
         } 

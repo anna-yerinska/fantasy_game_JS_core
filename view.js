@@ -56,17 +56,19 @@ function viewGameOver() {
         gameOver = document.createElement('button');
 
     gameOver.classList.add('game-over');
-    gameOver.innerHTML =  "<span class = 'game-over--text'>Game over!</span>";
+    gameOver.innerHTML = "<span class = 'game-over--text'>Game over!</span>";
     battleContainer.appendChild(gameOver);
-}
+};
 
-function btnAttack() {
+/*function btnAttack(battle,kingdom,enemy) {
     var btnKingdomAttack = document.querySelector('.btn-attack--kingdom'),
         btnEnemyAttack = document.querySelector('.btn-attack--enemy');
 
-    btnKingdomAttack.addEventListener('click', kingdomAttack);
     btnEnemyAttack.addEventListener('click', enemyAttack);
+    btnKingdomAttack.addEventListener('click', kingdomAttack);    
 }
+*/
+
 
 
     
