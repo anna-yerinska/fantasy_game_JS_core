@@ -25,8 +25,19 @@ function btnStartGameNone() {
     startContainer.style.display = "inline-block";
     btnCreateArmy.addEventListener('click', createArmy);
     btnCreateArmy.addEventListener('click', kingdomImgBgNone);
-    btnCreateArmy.addEventListener('click', btnBattleVisible);
+    btnCreateArmy.addEventListener('click', btnMode);
+    /*btnCreateArmy.addEventListener('click', btnBattleVisible);*/
 };
+
+function btnMode() {
+    var btnModeManual = document.querySelector('.btnModeManual'),
+        btnModeAuto = document.querySelector('.btnModeAuto');
+        
+    btnModeManual.style.display = "inline-block";
+    btnModeAuto.style.display = "inline-block";
+    btnModeManual.addEventListener('click',btnBattleVisibleManual);
+    btnModeAuto.addEventListener('click',btnBattleVisibleAuto);
+}
 
 function kingdomImgBgNone() {
     var kingdomImg = document.querySelector('.kingdom-img'),
@@ -36,12 +47,38 @@ function kingdomImgBgNone() {
     btnCreateArmy.style.display = "none";
 };
 
-function btnBattleVisible() {
-    var btnBattle = document.querySelector('.battle');
+function btnBattleVisibleManual() {
+    var btnModeManual = document.querySelector('.btnModeManual'),
+        btnModeAuto = document.querySelector('.btnModeAuto'),
+        btnBattle = document.querySelector('.battle');
 
     btnBattle.style.display = "block";
-    btnBattle.addEventListener('click', newBattle);
-    btnBattle.addEventListener('click', btnBattleNoVisible);
+    btnBattle.addEventListener('click', newBattleManual);
+    btnBattleNoVisibleManual();
+    btnBattleNoVisibleAuto();
+};
+
+function btnBattleVisibleAuto() {
+    var btnModeManual = document.querySelector('.btnModeManual'),
+        btnModeAuto = document.querySelector('.btnModeAuto'),
+        btnBattle = document.querySelector('.battle');
+
+    btnBattle.style.display = "block";
+    btnBattle.addEventListener('click', newBattleAuto);
+    btnBattleNoVisibleManual();
+    btnBattleNoVisibleAuto();
+};
+
+function btnBattleNoVisibleManual() {
+    var btnModeManual = document.querySelector('.btnModeManual');
+        
+    btnModeManual.style.display = "none";
+};
+
+function btnBattleNoVisibleAuto() {
+    var btnModeAuto = document.querySelector('.btnModeAuto');
+
+    btnModeAuto.style.display = "none";
 };
 
 function btnBattleNoVisible() {
@@ -51,23 +88,18 @@ function btnBattleNoVisible() {
 
 };
 
-function viewGameOver() {
+function viewGameOver(battle) {
     var battleContainer = document.querySelector('.start-container'),
         gameOver = document.createElement('button');
 
     gameOver.classList.add('game-over');
     gameOver.innerHTML = "<span class = 'game-over--text'>Game over!</span>";
     battleContainer.appendChild(gameOver);
+    return true;
 };
 
-/*function btnAttack(battle,kingdom,enemy) {
-    var btnKingdomAttack = document.querySelector('.btn-attack--kingdom'),
-        btnEnemyAttack = document.querySelector('.btn-attack--enemy');
 
-    btnEnemyAttack.addEventListener('click', enemyAttack);
-    btnKingdomAttack.addEventListener('click', kingdomAttack);    
-}
-*/
+
 
 
 

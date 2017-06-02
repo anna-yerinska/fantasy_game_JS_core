@@ -147,7 +147,9 @@ body
 .info-kingdom,
 .info-enemy,
 .info-kingdom--after,
-.info-enemy--after
+.info-enemy--after,
+.info-kingdomAuto,
+.info-enemyAuto
 
 {
     height: 135px;
@@ -159,25 +161,36 @@ body
 }
 
 .info-kingdom,
+.info-kingdomAuto,
 .info-kingdom--after
 {
     margin-right: 0;
 }
 
 .info-enemy,
+.info-enemyAuto,
 .info-enemy--after
 {
     margin-left: 0;
+}
+
+.info-kingdomAuto,
+.info-enemyAuto
+{
+    height: 60px;
 }
 
 .info-kingdom--after,
 .info-enemy--after
 {
     border:3px solid green;
+    height: 50px;
 }
 
-.info-kingdom span,
-.info-enemy span
+.info-kingdom--text,
+.info-enemy--text,
+.btnModeManual--text,
+.btnModeAuto--text
 {
     text-transform: none;
     display: inline-block;
@@ -186,7 +199,9 @@ body
 }
 
 .btn-attack--kingdom,
-.btn-attack--enemy
+.btn-attack--enemy,
+.btnModeManual,
+.btnModeAuto
 {
     width: 150px;
     height: 50px;
@@ -201,6 +216,12 @@ body
     font-weight: bold;
     opacity: 1;
     cursor: pointer;
+}
+
+.btnModeManual,
+.btnModeAuto
+{
+    display: none;
 }
 
 .deadElf,

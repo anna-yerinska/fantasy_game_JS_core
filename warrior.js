@@ -2,7 +2,7 @@
 
 function Warrior (name, min, max) {
     this.power = randomValue(min, max);
-    this.health = randomValue(100, 250);
+    this.health = randomValue(150, 350);
     this.name = name;
     this.isAlive = function() {
         if (this.health <= 0) {                   
@@ -32,21 +32,21 @@ function createArmy(orkAmount, elfAmount, hobbitAmount) {
 
 function createArmyOrks(orkAmount) {
     for (let i = 0; i < orkAmount; i++) {
-        var ork = warriorList.push(new Warrior('Ork', 70, 100));
+        var ork = warriorList.push(new Warrior('Ork', 100, 300));
     }
     return warriorList;
 };
 
 function createArmyElfs(elfAmount) {
     for (let i = 0; i < elfAmount; i++) {
-        var elf = warriorList.push(new Warrior('Elf', 60, 100));
+        var elf = warriorList.push(new Warrior('Elf', 160, 250));
     }
     return warriorList;
 };
 
 function createArmyHobbits(hobbitAmount) {
     for (let i = 0; i < hobbitAmount; i++) {
-        var hobbit = warriorList.push(new Warrior('Hobbit', 50, 100));
+        var hobbit = warriorList.push(new Warrior('Hobbit', 150, 200));
     }
     return warriorList;
 };
